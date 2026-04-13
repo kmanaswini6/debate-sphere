@@ -1,7 +1,9 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useAuth } from '../context/AuthContext';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
 const features = [
   {
