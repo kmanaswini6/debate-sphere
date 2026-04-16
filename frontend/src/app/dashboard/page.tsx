@@ -163,7 +163,7 @@ export default function DashboardPage() {
                       type="text"
                       value={debateForm.topic}
                       onChange={(e) => setDebateForm({ ...debateForm, topic: e.target.value })}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-secondary text-white placeholder-gray-500"
+                      className="w-full px-4 py-3 bg-white/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary text-text dark:text-white placeholder-gray-500"
                       placeholder="e.g., AI will replace human programmers"
                       required
                     />
@@ -176,7 +176,7 @@ export default function DashboardPage() {
                     <select
                       value={debateForm.mode}
                       onChange={(e) => setDebateForm({ ...debateForm, mode: e.target.value })}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-secondary text-white"
+                      className="w-full px-4 py-3 bg-white/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary text-text dark:text-white"
                     >
                       {DEBATE_MODES.map((mode) => (
                         <option key={mode.id} value={mode.id}>
@@ -194,7 +194,7 @@ export default function DashboardPage() {
                       <select
                         value={debateForm.aiPersonality}
                         onChange={(e) => setDebateForm({ ...debateForm, aiPersonality: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-secondary text-white"
+                        className="w-full px-4 py-3 bg-white/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary text-text dark:text-white"
                       >
                         {AI_PERSONALITIES.map((p) => (
                           <option key={p.id} value={p.id}>

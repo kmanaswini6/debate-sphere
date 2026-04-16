@@ -62,7 +62,7 @@ export const debateAPI = {
     api.post(`/api/debate/${id}/status`, data),
 
   nextRound: (id: string) =>
-    api.post(`/api/debate/${id}/next-round`, data),
+    api.post(`/api/debate/${id}/next-round`),
 };
 
 export const voteAPI = {

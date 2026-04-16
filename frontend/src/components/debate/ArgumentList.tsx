@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Message, Round } from '../../../../backend/src/models/Debate';
+import { IMessage, DebateRound } from '@/types/debate';
 import { ROUND_LABELS } from '@/lib/utils';
 
 interface ArgumentListProps {
-  messages: Message[];
-  currentRound: Round;
+  messages: IMessage[];
+  currentRound: DebateRound;
 }
 
 export default function ArgumentList({ messages, currentRound }: ArgumentListProps) {

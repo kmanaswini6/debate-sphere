@@ -5,34 +5,10 @@ import { io, Socket } from 'socket.io-client';
 import { useAuth } from './AuthContext';
 import { api } from '@/lib/api';
 import { Round } from '@/lib/utils';
-
-interface Message {
-  _id?: string;
-  speaker: 'pro' | 'con' | 'moderator';
-  content: string;
-  round: Round;
-  timestamp: string;
-  isAI: boolean;
-}
-
-interface Debate {
-  _id: string;
-  topic: string;
-  mode: string;
-  participants: any[];
-  proSide: any[];
-  conSide: any[];
-  messages: Message[];
-  status: 'active' | 'completed' | 'abandoned';
-  winner?: 'pro' | 'con' | 'draw';
-  votes: { pro: number; con: number };
-  currentRound: Round;
-  createdAt: string;
-  updatedAt: string;
-}
+import { IDebate, IMessage, DebateRound } from '@/types/debate';
 
 interface DebateContextType {
-  currentDebate: Debate | null;
+  currentDebate: IDebate | null;
   isConnected: boolean;
   participantCount: number;
   spectatorCount: number;
@@ -53,7 +29,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 export function DebateProvider({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   const [socket, setSocket] = useState<Socket | null>(null);
-  const [currentDebate, setCurrentDebate] = useState<Debate | null>(null);
+  const [currentDebate, setCurrentDebate] = useState<IDebate | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [participantCount, setParticipantCount] = useState(0);
   const [spectatorCount, setSpectatorCount] = useState(0);
@@ -95,7 +71,7 @@ export function DebateProvider({ children }: { children: React.ReactNode }) {
     newSocket.on('debate:round_changed', ({ round }) => {
       setCurrentDebate((prev) => {
         if (!prev) return prev;
-        return { ...prev, currentRound: round as Round };
+        return { ...prev, currentRound: round as DebateRound };
       });
     });
 

@@ -90,7 +90,7 @@ export default function HistoryPage() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search debates by topic..."
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-secondary text-white placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-white/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary text-text dark:text-white placeholder-gray-500"
                 />
               </div>
               <select
@@ -99,7 +99,7 @@ export default function HistoryPage() {
                   setStatusFilter(e.target.value);
                   setPage(1);
                 }}
-                className="px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-secondary text-white"
+                className="px-4 py-3 bg-white/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary text-text dark:text-white"
               >
                 <option value="all">All Status</option>
                 <option value="active">Active</option>

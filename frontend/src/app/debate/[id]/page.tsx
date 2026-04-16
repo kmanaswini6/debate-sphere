@@ -243,7 +243,7 @@ export default function DebatePage() {
                         value={argumentText}
                         onChange={(e) => setArgumentText(e.target.value)}
                         placeholder={`Enter your ${selectedSide} argument...`}
-                        className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-secondary text-white placeholder-gray-500 resize-none"
+                        className="flex-1 px-4 py-3 bg-white/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary text-text dark:text-white placeholder-gray-500 resize-none"
                         rows={3}
                         required
                       />

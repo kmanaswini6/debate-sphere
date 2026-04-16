@@ -53,13 +53,9 @@ export const initializeSocket = (io: Server): void => {
         // Send current state to the user
         socket.emit('debate:state', {
           debate: {
-            id: debate._id,
-            topic: debate.topic,
-            currentRound: debate.currentRound,
-            votes: debate.votes,
-            status: debate.status,
+            ...debate.toObject(),
+            _id: debate._id,
           },
-          messages: debate.messages,
           participantCount: room.participants.size,
           spectatorCount: room.spectators.size,
         });

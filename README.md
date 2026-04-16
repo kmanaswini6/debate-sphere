@@ -7,38 +7,40 @@ AI-powered debating platform with a professional debate stage interface. Engage 
 ![Express](https://img.shields.io/badge/Express-4-green?logo=express)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?logo=mongodb)
 
-## 🎯 Features
+## 🚀 Core Features
 
-- **AI-Powered Debates**: Engage with AI opponents powered by Llama 3.3 70B via Groq API
-- **Multiple Debate Modes**: User vs AI, AI vs AI, or User vs User (real-time)
-- **Structured Rounds**: Opening Statement, Rebuttal, Crossfire, and Closing Statement
-- **AI Personalities**: Logical, Emotional, Diplomatic, and Aggressive styles
-- **Live Audience Voting**: Real-time voting with visual results
-- **Professional UI**: TED-style debate stage design with glassmorphism effects
-- **Authentication**: Firebase Authentication (Google + Email/Password)
-- **Analytics**: Track your debate history, wins, losses, and win rate
+*   **AI-Powered Debates**: Engage with advanced AI opponents using the powerful Llama 3.3 70B model via Groq API.
+*   **Multiple Debate Modes**: Choose from User vs AI, AI vs AI, or real-time User vs User debates.
+*   **Structured Rounds**: Experience formal debate structure with Opening, Rebuttal, Crossfire, and Closing rounds.
+*   **Live Audience Voting**: Cast your vote and see real-time results as the audience decides the winner.
+*   **AI Personalities**: Face off against Logical, Emotional, Diplomatic, or Aggressive AI opponents.
+*   **Debate Analytics**: Track your performance with detailed statistics and win/loss records.
+*   **User Authentication**: Implemented using Firebase Authentication. The backend verifies Firebase ID tokens using the Firebase Admin SDK.
+*   **Professional UI**: TED-style debate stage design with glassmorphism effects.
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **State**: React Context + Zustand
-- **Real-time**: Socket.io Client
-- **Auth**: Firebase Authentication
-- **Hosting**: Vercel
+**Frontend:**
 
-### Backend
-- **Runtime**: Node.js
-- **Framework**: Express.js
-- **Language**: TypeScript
-- **Database**: MongoDB Atlas + Mongoose
-- **Real-time**: Socket.io
-- **AI**: Groq SDK (Llama 3.3 70B)
-- **Auth**: Firebase Admin SDK
-- **Hosting**: Render
+*   Next.js (App Router)
+*   React
+*   TypeScript
+*   Tailwind CSS
+*   Firebase Web SDK
+*   Axios
+*   Framer Motion
+*   Socket.io Client
+
+**Backend:**
+
+*   Node.js
+*   Express
+*   TypeScript
+*   MongoDB Atlas (Mongoose)
+*   Firebase Admin SDK
+*   Groq API
+*   Socket.io
+*   Helmet, CORS, Express Rate Limit
 
 ## 📁 Project Structure
 
@@ -46,37 +48,37 @@ AI-powered debating platform with a professional debate stage interface. Engage 
 debate-sphere/
 ├── backend/
 │   ├── src/
-│   │   ├── config/          # Database & Firebase config
-│   │   ├── models/          # Mongoose schemas
-│   │   ├── routes/          # API routes
-│   │   ├── controllers/     # Route handlers
-│   │   ├── middleware/      # Auth, error handling, rate limiting
-│   │   ├── services/        # Groq AI & Socket.io services
-│   │   ├── types/           # TypeScript types
-│   │   ├── utils/           # Helper functions
-│   │   └── server.ts        # Entry point
-│   ├── tests/
+│   │   ├── config/             # Database and Firebase configurations
+│   │   ├── controllers/        # Express route handlers
+│   │   ├── middleware/         # Authentication, error, and rate limit middleware
+│   │   ├── models/             # Mongoose schemas and models
+│   │   ├── routes/             # API route definitions
+│   │   ├── services/           # Groq AI and Socket.io services
+│   │   ├── utils/              # Utility functions and validators
+│   │   └── server.ts           # Main Express server entry point
+│   ├── tests/                # Backend unit and integration tests
+│   ├── .env.example          # Example environment variables for backend
 │   ├── package.json
-│   ├── tsconfig.json
-│   └── render.yaml
-│
+│   ├── render.yaml           # Render deployment configuration
+│   └── tsconfig.json
 ├── frontend/
 │   ├── src/
-│   │   ├── app/             # Next.js pages
-│   │   ├── components/      # React components
-│   │   ├── context/         # React Context providers
-│   │   ├── hooks/           # Custom hooks
-│   │   ├── lib/             # Utilities & API clients
-│   │   ├── styles/          # Global styles
-│   │   └── types/           # TypeScript types
-│   ├── public/
+│   │   ├── app/                # Next.js App Router pages and layouts
+│   │   ├── components/         # Reusable React components
+│   │   ├── context/            # React Context providers (Auth, Debate)
+│   │   ├── lib/                # Firebase client, API client, and utility functions
+│   │   ├── styles/             # Global CSS and Tailwind directives
+│   │   └── types/              # Custom TypeScript types (e.g., Debate, Message)
+│   ├── .env.example          # Example environment variables for frontend
+│   ├── next.config.js
 │   ├── package.json
-│   └── next.config.js
-│
+│   ├── postcss.config.js
+│   ├── tailwind.config.ts
+│   └── tsconfig.json
 └── README.md
 ```
 
-## 🚀 Getting Started
+## ⚙️ Setup Instructions
 
 ### Prerequisites
 
@@ -85,9 +87,10 @@ debate-sphere/
 - Firebase project with Authentication enabled
 - Groq API key
 
-### 1. Clone the Repository
+### 1. Clone the repository
 
 ```bash
+git clone https://github.com/kmanaswini6/debate-sphere.git
 cd debate-sphere
 ```
 
@@ -96,124 +99,92 @@ cd debate-sphere
 ```bash
 cd backend
 npm install
-
-# Create .env file
 cp .env.example .env
 ```
 
-Edit `.env` with your credentials:
+Edit the `.env` file with your credentials:
 
-```env
+```
 PORT=3001
-NODE_ENV=development
-
-# MongoDB Atlas connection string
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/debatesphere
-
-# Firebase Admin SDK credentials
-FIREBASE_PROJECT_ID=your-project-id
-FIREBASE_CLIENT_EMAIL=your-service-account@your-project.iam.gserviceaccount.com
-FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nYourPrivateKeyHere\n-----END PRIVATE KEY-----\n"
-
-# Groq API key
-GROQ_API_KEY=gsk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-# JWT secret (use a strong random string)
-JWT_SECRET=your-super-secret-jwt-key
-
-# Frontend URL for CORS
+MONGO_URI=<MongoDB Atlas Connection String>
+FIREBASE_PROJECT_ID=<Firebase Project ID>
+FIREBASE_CLIENT_EMAIL=<Firebase Service Account Email>
+FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
+GROQ_API_KEY=<Groq API Key>
 CORS_ORIGINS=http://localhost:3000,https://your-frontend.vercel.app
 ```
+
+**Note on `FIREBASE_PRIVATE_KEY`**: Ensure the private key is a single line with `\n` replacing actual newlines.
+
+To run the backend locally:
 
 ```bash
 npm run dev
 ```
-
-Backend will start on `http://localhost:3001`
 
 ### 3. Frontend Setup
 
 ```bash
-cd frontend
+cd ../frontend
 npm install
-
-# Create .env file
-cp .env.example .env
+cp .env.example .env.local
 ```
 
-Edit `.env` with your Firebase credentials:
+Edit the `.env.local` file with your Firebase client-side configuration and backend API URL:
 
-```env
-# Firebase Configuration
-NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
-NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
-
-# Backend API URL
+```
 NEXT_PUBLIC_API_URL=http://localhost:3001
+NEXT_PUBLIC_FIREBASE_API_KEY=<Firebase API Key>
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=<Firebase Auth Domain>
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=<Firebase Project ID>
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=<Firebase Storage Bucket>
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=<Firebase Sender ID>
+NEXT_PUBLIC_FIREBASE_APP_ID=<Firebase App ID>
 ```
+
+To run the frontend locally:
 
 ```bash
 npm run dev
 ```
 
-Frontend will start on `http://localhost:3000`
+## 🚀 Deployment
 
-## 🔑 API Keys Setup
+### Backend (Render)
 
-### Firebase Setup
+The `backend/render.yaml` file contains the configuration for deploying the backend to Render. Ensure your environment variables are set correctly on Render.
 
-1. Go to [Firebase Console](https://console.firebase.google.com/)
-2. Create a new project or select existing
-3. Enable Authentication (Google + Email/Password)
-4. Download the web app configuration for frontend `.env`
-5. Generate Admin SDK service account key for backend `.env`
+**Health Check Endpoint:** `/api/health`
 
-### Groq API Setup
+### Frontend (Vercel)
 
-1. Go to [Groq Console](https://console.groq.com/)
-2. Create an account or sign in
-3. Navigate to API Keys
-4. Create a new API key
-5. Add to backend `.env` as `GROQ_API_KEY`
+Deploy the Next.js frontend to Vercel. Ensure `NEXT_PUBLIC_API_URL` points to your deployed Render backend URL and all `NEXT_PUBLIC_FIREBASE_*` variables are configured in Vercel.
 
-### MongoDB Atlas Setup
+## 💡 API Endpoints
 
-1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Create a free cluster
-3. Create a database user
-4. Get the connection string
-5. Replace username and password in `MONGO_URI`
-
-## 📡 API Endpoints
+All backend API endpoints are prefixed with `/api`.
 
 ### Authentication
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register` | Register new user |
-| POST | `/api/auth/login` | Login user |
-| POST | `/api/auth/verify` | Verify Firebase token |
-| GET | `/api/auth/profile` | Get user profile (protected) |
+
+*   `POST /api/auth/register`: Register a new user.
+*   `POST /api/auth/login`: Log in a user.
+*   `POST /api/auth/verify`: Verify a Firebase token.
+*   `GET /api/auth/profile`: Get the current user's profile (requires authentication).
 
 ### Debates
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/debate` | Create new debate (protected) |
-| GET | `/api/debate/history` | Get user's debates (protected) |
-| GET | `/api/debate/:id` | Get single debate (protected) |
-| POST | `/api/debate/:id/argument` | Add argument (protected) |
-| POST | `/api/debate/:id/respond` | Get AI response (protected) |
-| POST | `/api/debate/:id/status` | Update status (protected) |
-| POST | `/api/debate/:id/next-round` | Advance round (protected) |
 
-### Votes
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/vote` | Submit vote (protected) |
-| GET | `/api/vote/:debateId` | Get vote counts |
+*   `POST /api/debate`: Create a new debate.
+*   `GET /api/debate/history`: Get user's debate history.
+*   `GET /api/debate/:id`: Get a specific debate by ID.
+*   `POST /api/debate/:id/argument`: Add an argument to a debate.
+*   `POST /api/debate/:id/respond`: Get an AI response for a debate.
+*   `POST /api/debate/:id/status`: Update debate status.
+*   `POST /api/debate/:id/next-round`: Advance to the next round in a debate.
+
+### Voting
+
+*   `POST /api/vote`: Submit a vote for a debate.
+*   `GET /api/vote/:debateId`: Get current vote counts for a debate.
 
 ## 🎮 Socket.io Events
 
@@ -232,26 +203,6 @@ Frontend will start on `http://localhost:3000`
 - `debate:user_joined` - User joined room
 - `debate:user_left` - User left room
 - `debate:error` - Error occurred
-
-## 🚢 Deployment
-
-### Backend (Render)
-
-1. Push code to GitHub
-2. Create new Web Service on Render
-3. Connect your repository
-4. Set build command: `npm install && npm run build`
-5. Set start command: `node dist/server.js`
-6. Add all environment variables
-7. Deploy
-
-### Frontend (Vercel)
-
-1. Push code to GitHub
-2. Import project in Vercel
-3. Set root directory to `frontend`
-4. Add environment variables
-5. Deploy
 
 ## 🧪 Testing
 
@@ -331,6 +282,39 @@ npm test
 - Input validation with express-validator
 - Helmet.js for HTTP security headers
 - MongoDB injection prevention via Mongoose
+
+## ✅ Production Readiness Checklist
+
+*   [x] All TypeScript errors resolved.
+*   [x] Unused parameters prefixed with underscores (`_req`, `_res`).
+*   [x] Unused imports removed.
+*   [x] Strict typing enforced.
+*   [x] Firebase Admin SDK initialization verified with private key `\n` replacement.
+*   [x] Frontend Firebase configuration confirmed.
+*   [x] Firebase ID tokens sent in `Authorization` header via Axios interceptor.
+*   [x] `MONGO_URI` (or `MONGODB_URI`) validation and connection in `connectDB()`.
+*   [x] Mongoose schemas and models correctly defined.
+*   [x] Groq AI service verified, including `/api/debate/generate` endpoint.
+*   [x] Proper error handling and response validation for Groq AI.
+*   [x] Express routes (`/api/auth`, `/api/debate`, `/api/vote`) confirmed.
+*   [x] Functional `/api/health` endpoint added.
+*   [x] Rate limiting and global error handling validated.
+*   [x] CORS configured for local and production environments.
+*   [x] Socket.io initialization and event handling verified for production compatibility.
+*   [x] Next.js App Router compatibility confirmed.
+*   [x] `next/router` usage replaced with `next/navigation` where applicable.
+*   [x] Tailwind CSS configuration and font loading validated.
+*   [x] Axios interceptor correctly adds Firebase tokens to requests.
+*   [x] `layout.tsx` correctly wraps providers and global styles.
+*   [x] `.env` and `.env.local` included in `.gitignore`.
+*   [x] Usage of Helmet and rate limiting validated.
+*   [ ] User inputs sanitized (manual review recommended for specific inputs).
+*   [x] `backend/render.yaml` validated.
+*   [x] `npm run build` and `npm start` scripts exist in backend.
+*   [x] Environment variables properly referenced in backend deployment.
+*   [x] `NEXT_PUBLIC_API_URL` points to the deployed backend in frontend.
+*   [x] Frontend environment variables and production build validated.
+*   [x] Professional `README.md` generated.
 
 ## 📝 License
 

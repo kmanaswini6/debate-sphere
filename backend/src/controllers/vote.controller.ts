@@ -3,11 +3,12 @@ import { validationResult } from 'express-validator';
 import { Vote } from '../models/Vote';
 import { Debate } from '../models/Debate';
 import { User } from '../models/User';
+import { AuthRequest } from '../middleware/auth.middleware';
 
 /**
  * Submit a vote for a debate
  */
-export const submitVote = async (req: Request, res: Response): Promise<void> => {
+export const submitVote = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -16,7 +17,7 @@ export const submitVote = async (req: Request, res: Response): Promise<void> => 
     }
 
     const { debateId, selectedSide } = req.body;
-    const userId = (req as any).user?.userId;
+    const userId = req.user?.userId;
 
     if (!userId) {
       res.status(401).json({ error: 'User not authenticated' });

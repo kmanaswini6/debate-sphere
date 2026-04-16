@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { IDebate } from '../../../../backend/src/models/Debate';
+import { IDebate, IParticipant } from '@/types/debate';
 
 interface DebateStageProps {
   debate: IDebate;
@@ -48,12 +48,12 @@ export default function DebateStage({ debate, selectedSide, onSideChange }: Deba
               In Favor
             </div>
             <div className="flex justify-center gap-2 flex-wrap">
-              {debate.proSide.map((participant, index) => (
+              {(debate.proSide as IParticipant[]).map((participant, index) => (
                 <span
                   key={index}
                   className="px-3 py-1 bg-pro/20 text-pro rounded-full text-xs"
                 >
-                  {participant?.name || 'AI'}
+                  {typeof participant === 'object' ? participant.name : 'AI'}
                 </span>
               ))}
               {debate.proSide.length === 0 && debate.mode.includes('ai') && (
@@ -80,12 +80,12 @@ export default function DebateStage({ debate, selectedSide, onSideChange }: Deba
               Against
             </div>
             <div className="flex justify-center gap-2 flex-wrap">
-              {debate.conSide.map((participant, index) => (
+              {(debate.conSide as IParticipant[]).map((participant, index) => (
                 <span
                   key={index}
                   className="px-3 py-1 bg-con/20 text-con rounded-full text-xs"
                 >
-                  {participant?.name || 'AI'}
+                  {typeof participant === 'object' ? participant.name : 'AI'}
                 </span>
               ))}
               {debate.conSide.length === 0 && debate.mode.includes('ai') && (

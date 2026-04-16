@@ -83,41 +83,41 @@ export default function SignupPage() {
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-sm text-gray-300 mb-2">
+                <label className="block text-sm text-text-muted dark:text-gray-300 mb-2">
                   Name
                 </label>
                 <input
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-secondary text-white placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-white/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary text-text dark:text-white placeholder-gray-500"
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-gray-300 mb-2">
+                <label className="block text-sm text-text-muted dark:text-gray-300 mb-2">
                   Email
                 </label>
                 <input
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-secondary text-white placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-white/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary text-text dark:text-white placeholder-gray-500"
                   placeholder="you@example.com"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-gray-300 mb-2">
+                <label className="block text-sm text-text-muted dark:text-gray-300 mb-2">
                   Password
                 </label>
                 <input
                   type="password"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-secondary text-white placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-white/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary text-text dark:text-white placeholder-gray-500"
                   placeholder="••••••••"
                   required
                   minLength={6}
@@ -125,14 +125,14 @@ export default function SignupPage() {
               </div>
 
               <div>
-                <label className="block text-sm text-gray-300 mb-2">
+                <label className="block text-sm text-text-muted dark:text-gray-300 mb-2">
                   Confirm Password
                 </label>
                 <input
                   type="password"
                   value={formData.confirmPassword}
                   onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-secondary text-white placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-white/5 border border-primary/20 rounded-lg focus:outline-none focus:border-primary text-text dark:text-white placeholder-gray-500"
                   placeholder="••••••••"
                   required
                   minLength={6}

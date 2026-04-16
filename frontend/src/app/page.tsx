@@ -65,7 +65,7 @@ const HomePage: React.FC = () => {
 
   const handleStartDebate = () => {
     if (isAuthenticated) {
-      router.push('/debate/new');
+      router.push('/dashboard');
     } else {
       router.push('/login');
     }
